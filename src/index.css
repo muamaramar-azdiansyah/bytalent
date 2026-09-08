@@ -1,0 +1,352 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f7f8fc;
+  color: #020617;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ============================================================
+   HERO GRID
+   ============================================================ */
+
+.bytalent-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 65%,
+    transparent 100%
+  );
+}
+
+/* ============================================================
+   ORBIT SYSTEM
+   ============================================================ */
+
+.spin-orbit-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 405px;
+  height: 405px;
+  transform: translate(-50%, -50%);
+  animation: bytalent-orbit-spin 32s linear infinite;
+  will-change: transform;
+}
+
+.orbit-item-slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 76px;
+  margin-left: -75px;
+  margin-top: -38px;
+  transform: rotate(var(--angle)) translateY(-202px);
+}
+
+.orbit-badge-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  transform: rotate(calc(var(--angle) * -1));
+  animation: bytalent-counter-spin 32s linear infinite;
+  will-change: transform;
+}
+
+.orbit-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.08),
+    inset 0 0 0 4px rgba(248, 250, 252, 0.9);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.orbit-logo:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 18px 35px rgba(15, 23, 42, 0.14),
+    inset 0 0 0 4px rgba(248, 250, 252, 1);
+}
+
+.orbit-logo-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  color: #334155;
+}
+
+.orbit-logo-red {
+  box-shadow:
+    0 10px 28px rgba(225, 29, 72, 0.12),
+    inset 0 0 0 4px rgba(255, 241, 242, 0.9);
+}
+.orbit-logo-red .orbit-logo-inner {
+  color: #e11d48;
+}
+
+.orbit-logo-blue {
+  box-shadow:
+    0 10px 28px rgba(14, 165, 233, 0.13),
+    inset 0 0 0 4px rgba(240, 249, 255, 0.9);
+}
+.orbit-logo-blue .orbit-logo-inner {
+  color: #0284c7;
+}
+
+.orbit-logo-indigo {
+  box-shadow:
+    0 10px 28px rgba(99, 102, 241, 0.14),
+    inset 0 0 0 4px rgba(238, 242, 255, 0.9);
+}
+.orbit-logo-indigo .orbit-logo-inner {
+  color: #4f46e5;
+}
+
+.orbit-logo-green {
+  box-shadow:
+    0 10px 28px rgba(16, 185, 129, 0.14),
+    inset 0 0 0 4px rgba(236, 253, 245, 0.9);
+}
+.orbit-logo-green .orbit-logo-inner {
+  color: #059669;
+}
+
+.orbit-logo-yellow {
+  box-shadow:
+    0 10px 28px rgba(245, 158, 11, 0.14),
+    inset 0 0 0 4px rgba(255, 251, 235, 0.9);
+}
+.orbit-logo-yellow .orbit-logo-inner {
+  color: #d97706;
+}
+
+.orbit-logo-cyan {
+  box-shadow:
+    0 10px 28px rgba(6, 182, 212, 0.14),
+    inset 0 0 0 4px rgba(236, 254, 255, 0.9);
+}
+.orbit-logo-cyan .orbit-logo-inner {
+  color: #0891b2;
+}
+
+.orbit-label {
+  position: relative;
+  display: block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  color: #475569;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.07);
+}
+
+@keyframes bytalent-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes bytalent-counter-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ============================================================
+   TOOLS & SOFTWARE MARQUEE
+   ============================================================ */
+
+.bytalent-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0;
+  background: #ffffff;
+}
+
+.bytalent-marquee-wrapper::before,
+.bytalent-marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bytalent-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.bytalent-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.bytalent-marquee {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+  animation: bytalent-marquee-scroll 24s linear infinite;
+  will-change: transform;
+}
+
+.bytalent-marquee > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 8px 24px;
+  margin: 0 8px;
+  border-radius: 9999px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.bytalent-marquee > div > span:first-child {
+  display: block;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+.bytalent-marquee > div:hover {
+  color: #2563eb;
+  border-color: #93c5fd;
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+@keyframes bytalent-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.bytalent-marquee-wrapper:hover .bytalent-marquee {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .spin-orbit-layer {
+    width: 350px;
+    height: 350px;
+  }
+  .orbit-item-slot {
+    transform: rotate(var(--angle)) translateY(-175px);
+  }
+  .orbit-logo {
+    width: 55px;
+    height: 55px;
+  }
+  .orbit-logo-inner {
+    width: 41px;
+    height: 41px;
+    font-size: 14px;
+  }
+  .orbit-label {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 640px) {
+  .spin-orbit-layer {
+    width: 300px;
+    height: 300px;
+  }
+  .orbit-item-slot {
+    transform: rotate(var(--angle)) translateY(-150px);
+  }
+  .orbit-label {
+    display: none;
+  }
+  .bytalent-marquee-wrapper::before,
+  .bytalent-marquee-wrapper::after {
+    width: 50px;
+  }
+}
